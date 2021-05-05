@@ -5,7 +5,7 @@ import "../../styles/pupLoadingIndicator.css";
 const PupLoadingIndicator = () => {
   return(
     <div className="loading-indicator-container">
-      <img alt="Pupper" src={pupURL} className="loading-indicator"></img>
+      <img alt="Puppers Loading" src={pupURL} className="loading-indicator"></img>
     </div>
   );
 };
