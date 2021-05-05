@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useAxios from "axios-hooks";
 import styled, { keyframes } from "styled-components";
+import PupSpinner from "./components/PupLoadingIndicator/PupLoadingIndicator";
 
 const handsomeBasset = require("./assets/handsomeBasset.jpeg");
 
@@ -16,21 +17,26 @@ INFO: if there are issues using hooks, this may be helpful: https://github.com/f
 
 function App() {
   const [pupper, setPupper] = useState(handsomeBasset);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [{ data, loading, error }, refetch] = useAxios(API);
+
+  let woof = new Audio("/woof.mp3");
   
-  const handleClick = (event) => {
-    event.preventDefault();
+  const handleClick = () => {
+    setIsLoading(true);
     setPupper(data.message);
     refetch();
   }
 
-  if (loading) {
-    // Return a loading indicator
+  const handleLoaded = () => {
+    setIsLoading(false);
+    woof.play();
   }
 
   if (error) {
     // Return an error message
+    console.error(error);
   }
 
   return (
@@ -38,11 +44,15 @@ function App() {
       <Body>
         <Header>
           <Logo>Sphere Pups</Logo>
-          <Button onClick={(event) => handleClick(event)}>GET MOAR PUPS</Button>
+          <Button onClick={() => handleClick()}>GET MOAR PUPS</Button>
         </Header>
 
-        <Frame>
-          <Image src={pupper} />
+        <div style={{display: loading || isLoading ? "block" : "none"}}>
+          <PupSpinner />
+        </div>
+
+        <Frame style={{display: loading || isLoading ? "none" : "block"}}>
+          <Image src={pupper} onLoad={() => handleLoaded()} />
         </Frame>
 
         <Footer>© 1996</Footer>
