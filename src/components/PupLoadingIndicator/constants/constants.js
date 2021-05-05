@@ -1,0 +1,1 @@
+export const pupURL = "https://img.cloudygif.com/full/eaa3beacb1c15cf0.";
