@@ -44,7 +44,7 @@ function App() {
       <Body>
         <Header>
           <Logo>Sphere Pups</Logo>
-          <Button onClick={() => handleClick()}>GET MOAR PUPS</Button>
+          <Button onClick={handleClick}>GET MOAR PUPS</Button>
         </Header>
 
         <div style={{display: loading || isLoading ? "block" : "none"}}>
@@ -52,7 +52,7 @@ function App() {
         </div>
 
         <Frame style={{display: loading || isLoading ? "none" : "block"}}>
-          <Image src={pupper} onLoad={() => handleLoaded()} />
+          <Image src={pupper} onLoad={handleLoaded} />
         </Frame>
 
         <Footer>© 1996</Footer>
