@@ -2,7 +2,7 @@ import React from "react";
 import { pupURL } from "./constants/constants";
 import "../../styles/pupLoadingIndicator.css";
 
-const PupSpinner = () => {
+const PupLoadingIndicator = () => {
   return(
     <div className="loading-indicator-container">
       <img alt="Pupper" src={pupURL} className="loading-indicator"></img>
@@ -10,4 +10,4 @@ const PupSpinner = () => {
   );
 };
 
-export default PupSpinner;
+export default PupLoadingIndicator;

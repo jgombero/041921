@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useAxios from "axios-hooks";
 import styled, { keyframes } from "styled-components";
-import PupSpinner from "./components/PupLoadingIndicator/PupLoadingIndicator";
+import PupLoadingIndicator from "./components/PupLoadingIndicator/PupLoadingIndicator";
 
 const handsomeBasset = require("./assets/handsomeBasset.jpeg");
 
@@ -48,7 +48,7 @@ function App() {
         </Header>
 
         <div style={{display: loading || isLoading ? "block" : "none"}}>
-          <PupSpinner />
+          <PupLoadingIndicator />
         </div>
 
         <Frame style={{display: loading || isLoading ? "none" : "block"}}>
